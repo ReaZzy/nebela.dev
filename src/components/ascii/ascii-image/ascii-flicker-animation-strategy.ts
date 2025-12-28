@@ -15,7 +15,6 @@ export class AsciiFlickerAnimationStrategy implements AsciiAnimationStrategy {
   private nonSpaceCoordinates: { x: number; y: number }[] = [];
   private validFlickerCoordinates: Set<string> = new Set();
 
-
   constructor({ presenter, asciiArt }: AsciiAnimationStrategyParams) {
     this.asciiArt = asciiArt;
     this.presenter = presenter;
@@ -39,15 +38,13 @@ export class AsciiFlickerAnimationStrategy implements AsciiAnimationStrategy {
     });
   }
 
-
-
   private updateFlickers() {
     this.flickerPointsManager.updateFlickers();
 
     if (Math.random() < 0.3 && this.nonSpaceCoordinates.length > 0) {
       const seed =
         this.nonSpaceCoordinates[
-        Math.floor(Math.random() * this.nonSpaceCoordinates.length)
+          Math.floor(Math.random() * this.nonSpaceCoordinates.length)
         ];
       this.flickerPointsManager.addFlickerPoint(
         new FlickerPoint({
