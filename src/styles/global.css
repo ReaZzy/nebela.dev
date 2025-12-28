@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --green-gradient: 0deg, #134e5e 0%, #71b280 100%;
+  }
+}
+
