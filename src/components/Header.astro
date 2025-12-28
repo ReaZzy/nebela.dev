@@ -1,0 +1,36 @@
+---
+interface Props {
+  currentPage?: "home" | "blog";
+}
+
+const { currentPage } = Astro.props;
+---
+
+<header
+  class="w-full max-w-4xl mx-auto px-4 mt-8 mb-4"
+  transition:name="header"
+  transition:animate="fade"
+>
+  <nav class="flex gap-4 font-mono text-sm" aria-label="Main navigation">
+    <a
+      href="/"
+      {...currentPage !== "home" && { "data-astro-navigate": true }}
+      class={currentPage === "home"
+        ? "text-zinc-100 cursor-default pointer-events-none"
+        : "text-zinc-400 hover:text-green-400 active:text-green-400 transition-colors duration-200"}
+      {...currentPage === "home" && { "aria-current": "page" }}
+    >
+      [h] home
+    </a>
+    <a
+      href="/blog"
+      {...currentPage !== "blog" && { "data-astro-navigate": true }}
+      class={currentPage === "blog"
+        ? "text-zinc-100 cursor-default pointer-events-none"
+        : "text-zinc-400 hover:text-green-400 active:text-green-400 transition-colors duration-200"}
+      {...currentPage === "blog" && { "aria-current": "page" }}
+    >
+      [b] blog
+    </a>
+  </nav>
+</header>

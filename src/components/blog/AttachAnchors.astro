@@ -1,0 +1,71 @@
+---
+
+---
+
+<script>
+  let abortController = new AbortController();
+
+  function setupHeadingAnchors() {
+    const clearActiveHeadings = () => {
+      document
+        .querySelectorAll(".prose .active-heading")
+        .forEach((h) => h.classList.remove("active-heading"));
+    };
+
+    const activateHeading = (target: Element) => {
+      clearActiveHeadings();
+      target.classList.add("active-heading");
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    document
+      .querySelectorAll<HTMLElement>(
+        ".prose h1.heading-with-anchor, .prose h2.heading-with-anchor, .prose h3.heading-with-anchor"
+      )
+      .forEach((heading) => {
+        heading.style.cursor = "pointer";
+
+        heading.addEventListener(
+          "click",
+          (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            activateHeading(heading);
+            if (heading.id) {
+              window.history.replaceState(null, "", `#${heading.id}`);
+            }
+          },
+          { signal: abortController.signal }
+        );
+      });
+
+    window.addEventListener(
+      "hashchange",
+      () => {
+        const hash = window.location.hash;
+        if (hash) {
+          const target = document.querySelector(hash);
+          if (target) activateHeading(target);
+        } else {
+          clearActiveHeadings();
+        }
+      },
+      { signal: abortController.signal }
+    );
+
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) activateHeading(target);
+    }
+  }
+
+  setupHeadingAnchors();
+
+  document.addEventListener("astro:before-swap", () => {
+    abortController.abort();
+    abortController = new AbortController();
+  });
+
+  document.addEventListener("astro:page-load", setupHeadingAnchors);
+</script>

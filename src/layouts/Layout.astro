@@ -1,25 +1,76 @@
 ---
-import "../styles/global.css";
+import "@/styles/global.css";
+import { ViewTransitions } from "astro:transitions";
+import { ME } from "@/constants/me";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title = ME.name, description = `personal website of ${ME.name}`, ogImage } = Astro.props;
+
+const ogImagePath =
+  ogImage || `/og/${Astro.url.pathname === "/" ? "home" : Astro.url.pathname.slice(1)}.png`;
+const ogImageUrl = new URL(ogImagePath, Astro.site || Astro.url.origin).href;
 ---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-  <body class="bg-zinc-900 text-zinc-100 flex items-center justify-center h-full w-full">
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={Astro.url.href} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url.href} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImageUrl} />
+
+    <ViewTransitions fallback="none" />
+  </head>
+  <body class="bg-zinc-900 text-zinc-100 min-h-full w-full">
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html {
+    height: 100%;
+    scrollbar-gutter: stable;
+    overscroll-behavior-y: none;
+  }
+  body {
+    margin: 0;
+    min-height: 100%;
+    overscroll-behavior-y: none;
+  }
 </style>
+
+<script>
+  import { initKeyboardNavigation } from "@/utils/keyboard-navigation";
+
+  initKeyboardNavigation();
+
+  document.addEventListener("astro:after-swap", initKeyboardNavigation);
+</script>

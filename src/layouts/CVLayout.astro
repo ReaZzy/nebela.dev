@@ -1,0 +1,26 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import RandomAsciiImage from "@/components/ascii/RandomAsciiImage.astro";
+import { ASCII_IMAGE_PATHS } from "@/components/ascii/constants/random-ascii-images.config";
+import { ME } from "@/constants/me";
+
+const { frontmatter } = Astro.props;
+const title = frontmatter?.title || "CV";
+---
+
+<Layout title={`${title} | ${ME.name}`} description={`CV of ${ME.name}`}>
+  <div class="relative z-10 min-h-screen flex flex-col">
+    <Header />
+
+    <main class="w-full max-w-4xl mx-auto px-4 pb-8 flex-1" transition:name="main-content">
+      <article class="prose max-w-none">
+        <slot />
+      </article>
+    </main>
+
+    <Footer />
+  </div>
+  <RandomAsciiImage images={ASCII_IMAGE_PATHS.blog} className="opacity-40" />
+</Layout>

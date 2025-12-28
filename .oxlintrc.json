@@ -1,0 +1,17 @@
+{
+  "plugins": ["react", "jsx-a11y", "import"],
+  "categories": {
+    "correctness": "warn",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "rules": {
+    "react/jsx-key": "error",
+    "react/jsx-no-duplicate-props": "error",
+    "react/jsx-no-undef": "error",
+    "jsx-a11y/alt-text": "warn",
+    "jsx-a11y/aria-props": "warn",
+    "jsx-a11y/aria-role": "warn"
+  },
+  "ignorePatterns": ["node_modules", "dist", ".astro"]
+}

@@ -1,8 +1,255 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-3xl: 2200px;
+  --font-mono: "Fira Code", monospace;
+}
+
 @layer theme {
   :root {
     --green-gradient: 0deg, #134e5e 0%, #71b280 100%;
+    --color-accent: #71b280;
   }
 }
 
+@layer components {
+  .prose {
+    @apply font-mono text-zinc-100 text-sm leading-relaxed;
+  }
+
+  .prose > *:last-child {
+    @apply mb-0;
+  }
+
+  .prose h1 {
+    @apply text-xl md:text-2xl font-normal mb-4 relative;
+  }
+
+  .prose h1:not(:first-child) {
+    @apply mt-8;
+  }
+
+  .prose h1.heading-with-anchor::before {
+    content: "# ";
+    @apply text-green-400;
+  }
+
+  .prose h2 {
+    @apply text-lg md:text-xl font-normal mb-3 mt-6 relative;
+  }
+
+  .prose h2.heading-with-anchor::before {
+    content: "## ";
+    @apply text-green-400;
+  }
+
+  .prose h3 {
+    @apply text-base md:text-lg font-normal mb-2 mt-4 relative;
+  }
+
+  .prose h3.heading-with-anchor::before {
+    content: "### ";
+    @apply text-green-400;
+  }
+
+  .prose .heading-anchor {
+    @apply absolute -left-4 text-zinc-500 hover:text-green-400 active:text-green-400 transition-all duration-200 no-underline pointer-events-none;
+  }
+
+  .prose .heading-anchor::before,
+  .prose .heading-anchor::after {
+    content: none;
+  }
+
+  /* Show anchor on hover for desktop */
+  @media (hover: hover) and (pointer: fine) {
+    .prose .heading-anchor {
+      @apply opacity-0;
+    }
+
+    .prose h1:hover .heading-anchor,
+    .prose h2:hover .heading-anchor,
+    .prose h3:hover .heading-anchor {
+      @apply opacity-100;
+    }
+  }
+
+  /* Hide anchors on mobile unless active */
+  @media (hover: none) and (pointer: coarse) {
+    .prose .heading-anchor {
+      @apply opacity-0;
+    }
+
+    .prose h1.active-heading .heading-anchor,
+    .prose h2.active-heading .heading-anchor,
+    .prose h3.active-heading .heading-anchor {
+      @apply opacity-100;
+    }
+  }
+
+  /* Highlight anchor if it is active */
+  .prose h1.active-heading .heading-anchor,
+  .prose h2.active-heading .heading-anchor,
+  .prose h3.active-heading .heading-anchor {
+    @apply opacity-100 text-green-400;
+  }
+
+  .prose p {
+    @apply mb-4;
+  }
+
+  .prose a {
+    @apply text-green-400 hover:text-green-300 active:text-green-300 transition-colors;
+  }
+
+  .prose a::before {
+    content: "[";
+  }
+
+  .prose a::after {
+    content: "]";
+  }
+
+  .prose strong {
+    @apply text-zinc-50 font-normal;
+  }
+
+  .prose strong::before {
+    content: "**";
+    @apply text-zinc-500;
+  }
+
+  .prose strong::after {
+    content: "**";
+    @apply text-zinc-500;
+  }
+
+  .prose em {
+    @apply italic text-zinc-300;
+  }
+
+  .prose em::before {
+    content: "_";
+    @apply text-zinc-500 not-italic;
+  }
+
+  .prose em::after {
+    content: "_";
+    @apply text-zinc-500 not-italic;
+  }
+
+  .prose code {
+    @apply bg-zinc-800 px-1.5 py-0.5 text-green-400;
+  }
+
+  .prose code::before {
+    content: "`";
+    @apply text-zinc-500;
+  }
+
+  .prose code::after {
+    content: "`";
+    @apply text-zinc-500;
+  }
+
+  .prose pre {
+    @apply bg-zinc-800 p-4 mb-4 overflow-x-auto border-l-2 border-green-400 relative min-h-[3rem];
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0 block;
+  }
+
+  .prose pre code::before,
+  .prose pre code::after {
+    content: none;
+  }
+
+  .prose .copy-button {
+    @apply absolute top-2 right-2 p-1.5 bg-zinc-700 hover:bg-zinc-600 active:bg-zinc-600 text-zinc-300 hover:text-green-400 active:text-green-400 transition-colors duration-200 cursor-pointer border border-zinc-600 flex items-center justify-center;
+  }
+
+  .prose .copy-button svg {
+    @apply w-4 h-4;
+  }
+
+  /* Show copy button on hover for desktop */
+  @media (hover: hover) and (pointer: fine) {
+    .prose .copy-button {
+      @apply opacity-0;
+    }
+
+    .prose pre:hover .copy-button {
+      @apply opacity-100;
+    }
+  }
+
+  /* Hide copy button on mobile */
+  @media (hover: none) and (pointer: coarse) {
+    .prose .copy-button {
+      @apply hidden;
+    }
+  }
+
+  .prose blockquote {
+    @apply border-l-2 border-zinc-500 pl-4 text-zinc-400 italic my-4;
+  }
+
+  .prose blockquote::before {
+    content: "> ";
+    @apply text-zinc-500 not-italic;
+  }
+
+  .prose ul {
+    @apply mb-4 pl-4;
+  }
+
+  .prose ul li {
+    @apply mb-1;
+  }
+
+  .prose ul li::before {
+    content: "- ";
+    @apply text-green-400;
+  }
+
+  .prose ol {
+    @apply mb-4 pl-4;
+    counter-reset: list-counter;
+  }
+
+  .prose ol li {
+    @apply mb-1;
+    counter-increment: list-counter;
+  }
+
+  .prose ol li::before {
+    content: counter(list-counter) ". ";
+    @apply text-green-400;
+  }
+
+  .prose hr {
+    @apply border-none my-8 text-zinc-500;
+  }
+
+  .prose hr::before {
+    content: "---";
+    @apply block text-center;
+  }
+
+  .prose img {
+    @apply my-4 border border-zinc-700;
+  }
+
+  .prose table {
+    @apply w-full mb-4 border-collapse;
+  }
+
+  .prose th {
+    @apply text-left border-b border-zinc-600 pb-2 text-green-400;
+  }
+
+  .prose td {
+    @apply border-b border-zinc-800 py-2;
+  }
+}

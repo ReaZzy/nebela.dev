@@ -1,0 +1,46 @@
+---
+import CopyIcon from "@/assets/icons/copy.svg?raw";
+import CheckIcon from "@/assets/icons/check.svg?raw";
+---
+
+<script define:vars={{ copyIcon: CopyIcon, checkIcon: CheckIcon }}>
+  let abortController = new AbortController();
+
+  function setupCopyButtons() {
+    const preElements = document.querySelectorAll(".prose pre:not(:has(.copy-button))");
+
+    preElements.forEach((pre) => {
+      const button = document.createElement("button");
+      button.className = "copy-button";
+      button.setAttribute("aria-label", "Copy code to clipboard");
+      button.innerHTML = copyIcon;
+
+      button.addEventListener(
+        "click",
+        async () => {
+          const code = pre.querySelector("code");
+          if (!code) return;
+
+          try {
+            await navigator.clipboard.writeText(code.textContent || "");
+            button.innerHTML = checkIcon;
+            setTimeout(() => (button.innerHTML = copyIcon), 2000);
+          } catch (err) {
+          }
+        },
+        { signal: abortController.signal }
+      );
+
+      pre.appendChild(button);
+    });
+  }
+
+  setupCopyButtons();
+
+  document.addEventListener("astro:before-swap", () => {
+    abortController.abort();
+    abortController = new AbortController();
+  });
+
+  document.addEventListener("astro:page-load", setupCopyButtons);
+</script>

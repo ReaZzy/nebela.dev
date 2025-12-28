@@ -1,8 +1,30 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import RandomAsciiImage from "@/components/ascii/RandomAsciiImage.astro";
+import { ASCII_IMAGE_PATHS } from "@/components/ascii/constants/random-ascii-images.config";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import RecentBlogPosts from "@/components/RecentBlogPosts.astro";
+import WorkExperience from "@/components/WorkExperience.astro";
+import PersonalInfo from "@/components/PersonalInfo.astro";
+import { ME } from "@/constants/me";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={ME.name} description={`personal website of ${ME.name}`}>
+  <div class="relative z-10 min-h-dvh flex flex-col">
+    <Header currentPage="home" />
+
+    <main
+      class="w-full max-w-4xl mx-auto px-4 flex-1 flex flex-col justify-center gap-12"
+      transition:name="main-content"
+    >
+      <PersonalInfo />
+      <RecentBlogPosts />
+      <WorkExperience />
+    </main>
+
+    <Footer />
+  </div>
+  <RandomAsciiImage images={ASCII_IMAGE_PATHS.left} />
+  <RandomAsciiImage images={ASCII_IMAGE_PATHS.right} />
 </Layout>

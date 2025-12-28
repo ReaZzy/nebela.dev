@@ -1,0 +1,46 @@
+---
+import fs from "node:fs/promises";
+import path from "node:path";
+import AsciiImage from "@/components/ascii/ascii-image";
+import type { ASCII_IMAGE_PATHS } from "@/components/ascii/constants/random-ascii-images.config";
+import type { TransformerPreset } from "@/components/ascii/constants/presets";
+
+interface Props {
+  images:
+    | typeof ASCII_IMAGE_PATHS.left
+    | typeof ASCII_IMAGE_PATHS.right
+    | typeof ASCII_IMAGE_PATHS.blog;
+  className?: string;
+  preClassName?: string;
+  preset?: TransformerPreset;
+}
+
+const { images, className = "", preClassName = "", preset } = Astro.props;
+
+const selectedConfig = images.length > 0 ? images[Math.floor(Math.random() * images.length)] : null;
+
+const content = selectedConfig
+  ? await fs.readFile(path.join(process.cwd(), selectedConfig.path), "utf-8")
+  : null;
+---
+
+{
+  selectedConfig &&
+    content &&
+    (selectedConfig.clientMedia ? (
+      <AsciiImage
+        client:visible
+        client:media={selectedConfig.clientMedia}
+        content={content}
+        className={`${preClassName} ${selectedConfig.className} ${className}`}
+        preset={preset ?? selectedConfig.preset}
+      />
+    ) : (
+      <AsciiImage
+        client:load
+        content={content}
+        className={`${preClassName} ${selectedConfig.className} ${className}`}
+        preset={preset ?? selectedConfig.preset}
+      />
+    ))
+}

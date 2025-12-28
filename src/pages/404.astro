@@ -1,0 +1,36 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import RandomAsciiImage from "@/components/ascii/RandomAsciiImage.astro";
+import { ASCII_IMAGE_PATHS } from "@/components/ascii/constants/random-ascii-images.config";
+
+const requestedPath = Astro.url.pathname;
+---
+
+<Layout title="404 - Page Not Found | Maksym Nebela" description="Page not found">
+  <div class="relative z-10 min-h-screen flex flex-col">
+    <Header />
+
+    <main
+      class="w-full max-w-4xl mx-auto px-4 flex-1 flex flex-col justify-center"
+      transition:name="main-content"
+    >
+      <div class="space-y-6">
+        <div class="font-mono">
+          <h1 class="text-4xl md:text-6xl text-zinc-100 mb-2">404</h1>
+          <p class="text-lg text-zinc-400">page not found</p>
+        </div>
+
+        <div class="font-mono text-sm text-zinc-500 space-y-1">
+          <p>$ cat {requestedPath}</p>
+          <p class="text-red-400">cat: {requestedPath}: No such file or directory</p>
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+  <RandomAsciiImage images={ASCII_IMAGE_PATHS.left} />
+  <RandomAsciiImage images={ASCII_IMAGE_PATHS.right} />
+</Layout>

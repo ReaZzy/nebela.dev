@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import { formatDate } from "@/utils/format-date";
+
+const recentPosts = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+---
+
+<section aria-label="Recent blog posts">
+  <div class="flex items-baseline gap-4 mb-4">
+    <h2 class="font-mono text-lg text-zinc-100">
+      <span class="text-green-400">#</span> blog
+    </h2>
+    <a
+      href="/blog"
+      data-astro-navigate
+      class="font-mono text-xs text-zinc-500 hover:text-green-400 active:text-green-400 transition-colors duration-200"
+      >[all posts]</a
+    >
+  </div>
+  <ul class="space-y-4" role="list">
+    {
+      recentPosts.map((post) => (
+        <li>
+          <article>
+            <a
+              href={`/blog/${post.slug}`}
+              data-astro-navigate
+              class="inline-flex gap-2 items-baseline group flex-wrap"
+            >
+              <h3 class="font-mono text-sm group-hover:text-green-400 group-active:text-green-400 transition-colors duration-200">
+                {post.data.title}
+              </h3>
+              <time
+                datetime={post.data.date.toISOString()}
+                class="font-mono text-xs text-zinc-600 whitespace-nowrap"
+              >
+                {formatDate(post.data.date, "short")}
+              </time>
+            </a>
+          </article>
+        </li>
+      ))
+    }
+  </ul>
+</section>

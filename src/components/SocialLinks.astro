@@ -1,0 +1,21 @@
+---
+import { ME } from "@/constants/me.ts";
+---
+
+<nav class="flex gap-4 font-mono text-sm mb-8" aria-label="Social links">
+  {
+    ME.socialLinks.map(({ label, link, external }) => {
+      const isInternal = link.startsWith("/");
+      return (
+        <a
+          href={link}
+          {...(isInternal && { "data-astro-navigate": true })}
+          {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+          class="text-zinc-400 hover:text-green-400 active:text-green-400 transition-colors duration-200"
+        >
+          [{label}]
+        </a>
+      );
+    })
+  }
+</nav>
