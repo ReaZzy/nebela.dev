@@ -18,9 +18,6 @@ export class AsciiLinearAnimationStrategy implements AsciiAnimationStrategy {
 
   private currentLineIndex: number;
   private encryptedCurrentLine = "";
-  private lastUpdateTime = 0;
-  private lineTimer = 0;
-  private encryptionTimer = 0;
 
   constructor({ presenter, asciiArt }: AsciiAnimationStrategyParams) {
     this.asciiArt = asciiArt;
@@ -40,41 +37,16 @@ export class AsciiLinearAnimationStrategy implements AsciiAnimationStrategy {
   public update(): void {
     if (this.isRevealFinished) return;
 
-    const now = performance.now();
-    if (this.lastUpdateTime === 0) {
-      this.lastUpdateTime = now;
-      return;
-    }
-
-    const delta = now - this.lastUpdateTime;
-    this.lastUpdateTime = now;
-
-    this.lineTimer += delta;
-    this.encryptionTimer += delta;
-
-    const lineInterval = 1000 / 96;
-    const encryptionInterval = 1000 / 12;
-
     const lines = this.asciiArt.split("\n");
 
-    if (this.encryptionTimer > encryptionInterval) {
-      this.encryptionTimer = 0;
+    // Just one step per call
+    this.currentLineIndex--;
+
+    if (this.currentLineIndex < 0) {
+      this.isRevealFinished = true;
+      this.finish();
+    } else {
       this.encryptedCurrentLine = this.scramble(lines[this.currentLineIndex]);
-    }
-
-    if (this.lineTimer > lineInterval) {
-      while (this.lineTimer > lineInterval && this.currentLineIndex >= 0) {
-        this.lineTimer -= lineInterval;
-        this.currentLineIndex--;
-        if (this.currentLineIndex >= 0) {
-          this.encryptedCurrentLine = this.scramble(lines[this.currentLineIndex]);
-        }
-      }
-
-      if (this.currentLineIndex < 0) {
-        this.isRevealFinished = true;
-        this.finish();
-      }
     }
   }
 
@@ -93,7 +65,6 @@ export class AsciiLinearAnimationStrategy implements AsciiAnimationStrategy {
   public async animate(): Promise<void> {
     this.stop();
     this.isRevealFinished = false;
-    this.lastUpdateTime = performance.now();
 
     const animationPromise = new Promise<void>((resolve, reject) => {
       this.resolvePromise = resolve;
@@ -106,7 +77,10 @@ export class AsciiLinearAnimationStrategy implements AsciiAnimationStrategy {
     this.currentLineIndex = lines.length - 1;
 
     const render = () => {
-      this.presenter.updateUi(""); // Trigger chain update
+      // Sequential mode: we can call presenter directly or trigger chain
+      // If it's sequential, it's the start of the chain or standalone.
+      // Using empty string in updateUi to trigger stage republish if used in pipe.
+      this.presenter.updateUi("");
     };
 
     this.encryptionController = new AnimationController(() => {
