@@ -5,6 +5,8 @@ import { ME } from "@/constants/me";
 import { formatDate } from "@/utils/format-date";
 import type { ReactElement } from "react";
 
+export const prerender = false;
+
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
 

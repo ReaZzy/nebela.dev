@@ -4,6 +4,8 @@ import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import { visit } from "unist-util-visit";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // Custom rehype plugin to add anchors to headings
 function rehypeHeadingAnchors() {
   return (tree) => {
@@ -72,4 +74,6 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: cloudflare()
 });
