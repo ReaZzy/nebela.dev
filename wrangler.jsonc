@@ -1,6 +1,6 @@
 {
 	"main": "dist/_worker.js/index.js",
-	"name": "maksym-nebela",
+	"name": "nebela-dev",
   "compatibility_date": "2026-01-04",
   "compatibility_flags": [
     "nodejs_compat"
