@@ -1,6 +1,12 @@
 import { getRandomChar } from "@/components/ascii/utils/getRandomChar";
-import type { AsciiTransformer, AsciiTransformerParams } from "@/components/ascii/transformers/transformer";
-import { LINEAR_ADVANCE_CHANCE, DEFAULT_SCRAMBLE_THROTTLE } from "@/components/ascii/transformers/linear/constants";
+import type {
+  AsciiTransformer,
+  AsciiTransformerParams,
+} from "@/components/ascii/transformers/transformer";
+import {
+  LINEAR_ADVANCE_CHANCE,
+  DEFAULT_SCRAMBLE_THROTTLE,
+} from "@/components/ascii/transformers/linear/constants";
 
 export interface LinearTransformerOptions extends AsciiTransformerParams {
   scrambleThrottle?: number;

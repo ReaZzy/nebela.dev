@@ -25,8 +25,7 @@ import CheckIcon from "@/assets/icons/check.svg?raw";
             await navigator.clipboard.writeText(code.textContent || "");
             button.innerHTML = checkIcon;
             setTimeout(() => (button.innerHTML = copyIcon), 2000);
-          } catch (err) {
-          }
+          } catch (err) {}
         },
         { signal: abortController.signal }
       );

@@ -15,7 +15,7 @@ const WORK_EXPERIENCES = [
     from: "Nov 2024",
     to: "Present",
     experience:
-      "worldwide leader in backup and data protection. built automation and testing infrastructure; now focused on large-scale enterprise frontend",
+      "worldwide leader in backup and data protection. built complex automation and testing infrastructure; now focused on large-scale enterprise frontend",
   },
   {
     title: "Radio Free Europe/Radio Liberty",
@@ -31,7 +31,7 @@ const WORK_EXPERIENCES = [
     from: "Jan 2022",
     to: "Mar 2023",
     experience:
-      "early-stage booking platform for RVs. built most core frontend flows, including booking and real-time chats",
+      "early-stage booking platform for RVs. built most core frontend flows, including booking and messaging",
   },
   {
     title: "Dalyoko",

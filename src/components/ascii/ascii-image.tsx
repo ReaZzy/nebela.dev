@@ -3,7 +3,10 @@ import { type TransformerConfig } from "@/components/ascii/transformers/pipe/pip
 import { useAsciiAnimation } from "@/components/ascii/hooks/use-ascii-animation";
 import { useHoverableAsciiImage } from "@/components/ascii/hooks/use-hoverable-ascii-image";
 import { useIsEngaged } from "@/hooks/use-is-engaged";
-import { ASCII_TRANSFORMER_PRESETS, type TransformerPreset } from "@/components/ascii/constants/presets";
+import {
+  ASCII_TRANSFORMER_PRESETS,
+  type TransformerPreset,
+} from "@/components/ascii/constants/presets";
 
 export interface AsciiImageProps {
   content: string;
