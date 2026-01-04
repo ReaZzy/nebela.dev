@@ -35,7 +35,7 @@ const recentPosts = (await getCollection("blog"))
               </h3>
               <time
                 datetime={post.data.date.toISOString()}
-                class="font-mono text-sm text-zinc-600 whitespace-nowrap"
+                class="font-mono text-sm text-zinc-400 whitespace-nowrap"
               >
                 {formatDate(post.data.date, "short")}
               </time>

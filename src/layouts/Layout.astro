@@ -11,8 +11,8 @@ interface Props {
 
 const { title = ME.name, description = `personal website of ${ME.name}`, ogImage } = Astro.props;
 
-const ogImagePath =
-  ogImage || `/og/${Astro.url.pathname === "/" ? "home" : Astro.url.pathname.slice(1)}.png`;
+const pathname = Astro.url.pathname === "/" ? "home" : Astro.url.pathname.slice(1).replace(/\/$/, "");
+const ogImagePath = ogImage || `/og/${pathname}.png`;
 const ogImageUrl = new URL(ogImagePath, Astro.site || Astro.url.origin).href;
 ---
 
@@ -40,6 +40,7 @@ const ogImageUrl = new URL(ogImagePath, Astro.site || Astro.url.origin).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />

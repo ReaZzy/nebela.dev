@@ -6,6 +6,8 @@ import RandomAsciiImage from "@/components/ascii/random-ascii-image";
 import MediaQuery from "@/components/MediaQuery";
 import { ASCII_IMAGE_PATHS } from "@/components/ascii/constants/random-ascii-images.config";
 
+export const prerender = false;
+
 const requestedPath = Astro.url.pathname;
 ---
 
