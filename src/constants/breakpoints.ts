@@ -1,11 +1,10 @@
 export const BREAKPOINTS = {
-  sm: "640px",
-  md: "768px",
-  lg: "1024px",
-  xl: "1280px",
-  "2xl": "1536px",
-  "3xl": "2200px",
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  "2xl": 1536,
+  "3xl": 2200,
 } as const;
 
-export const mediaQuery = (breakpoint: keyof typeof BREAKPOINTS) =>
-  `(min-width: ${BREAKPOINTS[breakpoint]})`;
+export type Breakpoint = keyof typeof BREAKPOINTS;

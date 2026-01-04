@@ -2,7 +2,7 @@
 import { ME } from "@/constants/me.ts";
 ---
 
-<nav class="flex gap-4 font-mono text-sm mb-8" aria-label="Social links">
+<nav class="flex gap-4 font-mono text-base mb-8" aria-label="Social links">
   {
     ME.socialLinks.map(({ label, link, external }) => {
       const isInternal = link.startsWith("/");

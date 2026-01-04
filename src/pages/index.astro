@@ -1,5 +1,6 @@
 ---
-import RandomAsciiImage from "@/components/ascii/RandomAsciiImage.astro";
+import RandomAsciiImage from "@/components/ascii/random-ascii-image";
+import MediaQuery from "@/components/MediaQuery";
 import { ASCII_IMAGE_PATHS } from "@/components/ascii/constants/random-ascii-images.config";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
@@ -25,6 +26,8 @@ import { ME } from "@/constants/me";
 
     <Footer />
   </div>
-  <RandomAsciiImage images={ASCII_IMAGE_PATHS.left} />
-  <RandomAsciiImage images={ASCII_IMAGE_PATHS.right} />
+  <MediaQuery client:only="react" minWidth="3xl">
+    <RandomAsciiImage client:idle images={ASCII_IMAGE_PATHS.left} />
+  </MediaQuery>
+  <RandomAsciiImage client:idle images={ASCII_IMAGE_PATHS.right} />
 </Layout>

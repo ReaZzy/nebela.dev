@@ -16,7 +16,7 @@ const { title, description, publishedAt, updatedAt } = Astro.props;
 
 <Layout title={`${title} | blog`} description={description}>
   <AsciiImage
-    client:load
+    client:idle
     path="/ascii-flower-3.txt"
     preset="no-flicker"
     className="justify-end bg-clip-text text-transparent bg-linear-(--green-gradient) fixed inset-0 z-0"
@@ -31,7 +31,7 @@ const { title, description, publishedAt, updatedAt } = Astro.props;
           <h1 itemprop="headline">{title}</h1>
           {
             publishedAt && (
-              <div class="flex gap-4 text-zinc-500 text-sm mt-2">
+              <div class="flex gap-4 text-zinc-400 text-base mt-2">
                 <time datetime={publishedAt.toISOString()} itemprop="datePublished">
                   {formatDate(publishedAt)}
                 </time>
@@ -52,7 +52,7 @@ const { title, description, publishedAt, updatedAt } = Astro.props;
     </main>
 
     <footer class="w-full max-w-4xl mx-auto px-4 pb-8">
-      <nav class="flex gap-4 font-mono text-sm text-zinc-500" aria-label="Post navigation">
+      <nav class="flex gap-4 font-mono text-base text-zinc-400" aria-label="Post navigation">
         <a href="/blog" class="hover:text-green-400 active:text-green-400 transition-colors"
           >&larr; back to blog</a
         >

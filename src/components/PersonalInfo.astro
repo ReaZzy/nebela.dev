@@ -5,20 +5,18 @@ import BriefcaseIcon from "@/assets/icons/briefcase.svg?raw";
 ---
 
 <section>
-  <h1 class="font-mono text-2xl">{ME.name}</h1>
+  <h1 class="font-mono text-3xl">{ME.name}</h1>
   <div class="flex items-center gap-3 mt-2 flex-wrap">
-    <div class="flex items-center gap-1.5 font-mono text-zinc-500 text-xs">
+    <div class="flex items-center gap-1.5 font-mono text-zinc-400 text-sm">
       <div class="w-3.5 h-3.5" set:html={MapPointIcon} />
       <span>{ME.location.city}, {ME.location.country}</span>
     </div>
-    <div class="flex items-center gap-1.5 font-mono text-zinc-500 text-xs">
+    <div class="flex items-center gap-1.5 font-mono text-zinc-400 text-sm">
       <div class="w-3.5 h-3.5" set:html={BriefcaseIcon} />
       <span>{ME.position}</span>
     </div>
   </div>
-  <p class="font-mono text-zinc-400 text-sm mt-2">
-    I'm {ME.age} and like exploring software architecture, distributed systems, and the deeper principles
-    of computer science. I <strike>use nvim btw,</strike> enjoy running, and love reading technical
-    books.
+  <p class="font-mono text-zinc-400 text-base mt-2">
+    I'm {ME.age} and like exploring software architecture, distributed systems, and the core of computer science. I <strike>use nvim btw,</strike> enjoy running, and love reading technical books.
   </p>
 </section>

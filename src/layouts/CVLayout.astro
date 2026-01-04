@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import RandomAsciiImage from "@/components/ascii/RandomAsciiImage.astro";
+import RandomAsciiImage from "@/components/ascii/random-ascii-image";
 import { ASCII_IMAGE_PATHS } from "@/components/ascii/constants/random-ascii-images.config";
 import { ME } from "@/constants/me";
 
@@ -22,5 +22,5 @@ const title = frontmatter?.title || "CV";
 
     <Footer />
   </div>
-  <RandomAsciiImage images={ASCII_IMAGE_PATHS.blog} className="opacity-40" />
+  <RandomAsciiImage client:idle images={ASCII_IMAGE_PATHS.blog} className="opacity-40" />
 </Layout>
