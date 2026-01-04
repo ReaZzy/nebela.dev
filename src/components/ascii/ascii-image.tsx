@@ -43,7 +43,7 @@ function AsciiImage({
     <div ref={containerRef} className={`pointer-events-none ${className ?? ""}`}>
       <pre
         ref={contentRef}
-        className="text-[4px] leading-[4px] md:text-[5px] md:leading-[5px] lg:text-[7px] lg:leading-[7px] xl:text-[9px] xl:leading-[9px] 2xl:text-[12px] 2xl:leading-[12px] whitespace-pre select-none pointer-events-none"
+        className="text-[5px] leading-[5px] lg:text-[7px] lg:leading-[7px] xl:text-[9px] xl:leading-[9px] 2xl:text-[12px] 2xl:leading-[12px] whitespace-pre select-none pointer-events-none"
       >
         {content}
       </pre>

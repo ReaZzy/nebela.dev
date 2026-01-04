@@ -4,7 +4,7 @@ export const BREAKPOINTS = {
   lg: 1024,
   xl: 1280,
   "2xl": 1536,
-  "3xl": 2200,
+  "3xl": 2400,
 } as const;
 
 export type Breakpoint = keyof typeof BREAKPOINTS;
