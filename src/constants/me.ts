@@ -28,15 +28,15 @@ const WORK_EXPERIENCES = [
   {
     title: "Campiri",
     link: "https://www.campiri.com",
-    from: "Jan 2022",
+    from: "Jane 2022",
     to: "Mar 2023",
     experience:
       "early-stage booking platform for RVs. built most core frontend flows, including booking and messaging",
   },
   {
     title: "Dalyoko",
-    from: "Jun 2021",
-    to: "Dec 2021",
+    from: "Dec 2021",
+    to: "June 2022",
     experience: 'web studio. led a small dev team and worked on "junior" things',
   },
 ] satisfies WorkExperience[];
