@@ -28,7 +28,8 @@ export function useRandomAsciiImage(images: ImageConfig[]): UseRandomAsciiImageR
 
     setConfig(selectedConfig);
 
-    fetch(`/${selectedConfig.path}`)
+    const abortController = new AbortController();
+    fetch(`/${selectedConfig.path}`, { signal: abortController.signal })
       .then((response) => response.text())
       .then((text) => {
         setContent(text);
@@ -39,6 +40,10 @@ export function useRandomAsciiImage(images: ImageConfig[]): UseRandomAsciiImageR
       .finally(() => {
         setIsLoading(false);
       });
+
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   return { content, config, isLoading };

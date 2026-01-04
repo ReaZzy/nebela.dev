@@ -7,7 +7,7 @@ title: CV
 
 ### Veeam Software — Prague, Czechia
 
-**Software Engineer** | Nov 2024 – Present
+Software Engineer | Nov 2024 – Present
 
 - Designed and developed an advanced Playwright test runner to orchestrate parallel infrastructure provisioning and test execution without conflicts, cutting runtime by 60% and nearly eliminating dependency-related failures
 - Implemented a C#, React, and Postgres test portal with a custom artefactory consolidating test runs, deployments, accessibility checks, videos, logs, metrics, and bug links to make collaboration with other teams easier
@@ -17,7 +17,7 @@ title: CV
 
 ### Radio Free Europe/Radio Liberty — Prague, Czechia
 
-**Frontend Developer** | Apr 2023 – Oct 2024
+Frontend Developer | Apr 2023 – Oct 2024
 
 - Migrated over 10 legacy ASPX pages and complex dialogs to React, updating the visual design and improving developer efficiency with Material UI
 - Identified and eliminated 36% (approximately 5,000 lines of code) of code duplication within the CMS using jscpd, addressing potential maintainability issues
@@ -27,7 +27,7 @@ title: CV
 
 ### Prague Labs — Prague, Czechia
 
-**Frontend Developer** | June 2022 – Mar 2023
+Frontend Developer | June 2022 – Mar 2023
 
 - Collaborated with a team of 2 designers to build a React component library, reducing landing page development time by 50% (from 1 day to 4 hours) and boosting PageSpeed Insights score by 20%
 - Introduced over 30 Playwright E2E tests covering crucial Campiri project functionality and putting them into CI for smoke testing of frequent releases
@@ -36,7 +36,7 @@ title: CV
 
 ### Dalyoko — Remote (Ukraine)
 
-**Frontend Developer** | Dec 2021 – June 2022
+Frontend Developer | Dec 2021 – June 2022
 
 - Led a team of 3 junior developers, which contributed to securing 2 new projects
 - Increased unit test coverage by 40% using Jest and Enzyme to ensure the validity of edge cases in vulnerable finance parts and enable the possibility of safe refactoring
@@ -44,5 +44,5 @@ title: CV
 
 ## Skills
 
-**Languages:** TypeScript, JavaScript, HTML, CSS  
-**Technologies:** React, Playwright, Node.js, AWS, Azure, Docker
+Languages: TypeScript, JavaScript, HTML, CSS  
+Technologies: React, Playwright, Node.js, AWS, Azure, Docker
