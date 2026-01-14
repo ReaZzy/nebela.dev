@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { visit } from "unist-util-visit";
 
 import cloudflare from "@astrojs/cloudflare";
+import mdx from "@astrojs/mdx";
 
 // Custom rehype plugin to add anchors to headings
 function rehypeHeadingAnchors() {
@@ -46,7 +47,7 @@ function rehypeHeadingAnchors() {
 // https://astro.build/config
 export default defineConfig({
   site: "https://nebela.dev",
-  integrations: [react()],
+  integrations: [react(), mdx()],
 
   prefetch: {
     prefetchAll: true,
