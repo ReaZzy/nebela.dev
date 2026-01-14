@@ -1,11 +1,8 @@
 ---
-import { getCollection } from "astro:content";
 import { formatDate } from "@/utils/format-date";
+import { getBlogPosts } from "@/utils/blog";
 
-const recentPosts = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
+const recentPosts = getBlogPosts().slice(0, 3);
 ---
 
 <section aria-label="Recent blog posts">
@@ -31,13 +28,13 @@ const recentPosts = (await getCollection("blog"))
               class="inline-flex gap-2 items-baseline group flex-wrap"
             >
               <h3 class="font-mono text-base group-hover:text-green-400 group-active:text-green-400 transition-colors duration-200">
-                {post.data.title}
+                {post.title}
               </h3>
               <time
-                datetime={post.data.date.toISOString()}
+                datetime={post.date.toISOString()}
                 class="font-mono text-sm text-zinc-400 whitespace-nowrap"
               >
-                {formatDate(post.data.date, "short")}
+                {formatDate(post.date, "short")}
               </time>
             </a>
           </article>

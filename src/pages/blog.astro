@@ -1,5 +1,4 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
@@ -7,10 +6,9 @@ import { formatDate } from "@/utils/format-date";
 import RandomAsciiImage from "@/components/ascii/random-ascii-image";
 import { ASCII_IMAGE_PATHS } from "@/components/ascii/constants/random-ascii-images.config";
 import { ME } from "@/constants/me";
+import { getBlogPosts } from "@/utils/blog";
 
-const posts = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = getBlogPosts();
 ---
 
 <Layout title={`Blog | ${ME.name}`} description={`blog posts by ${ME.name}`}>
@@ -29,18 +27,18 @@ const posts = (await getCollection("blog"))
                 <article class="group">
                   <a href={`/blog/${post.slug}`} data-astro-navigate class="inline-block">
                     <h3 class="font-mono text-lg group-hover:text-green-400 group-active:text-green-400 transition-colors duration-200">
-                      {post.data.title}
+                      {post.title}
                     </h3>
                     <time
-                      datetime={post.data.date.toISOString()}
+                      datetime={post.date.toISOString()}
                       class="font-mono text-sm text-zinc-400 mt-1 block"
                     >
-                      {formatDate(post.data.date)}
+                      {formatDate(post.date)}
                     </time>
                   </a>
                   <a href={`/blog/${post.slug}`} data-astro-navigate class="block">
                     <p class="font-mono text-sm text-zinc-400 mt-1 mb-0 last:mb-0">
-                      {post.data.description}
+                      {post.description}
                     </p>
                   </a>
                 </article>

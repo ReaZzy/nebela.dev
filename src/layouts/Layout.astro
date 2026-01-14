@@ -27,7 +27,14 @@ const ogImageUrl = new URL(ogImagePath, Astro.site || Astro.url.origin).href;
     <meta name="generator" content={Astro.generator} />
     <link
       rel="preload"
-      href="/fonts/ibm-plex-mono-400.woff2"
+      href="/fonts/geist-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/geist-mono-400.woff2"
       as="font"
       type="font/woff2"
       crossorigin

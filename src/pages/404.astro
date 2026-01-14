@@ -34,8 +34,8 @@ const requestedPath = Astro.url.pathname;
 
     <Footer />
   </div>
-  <MediaQuery client:only="react" minWidth="3xl">
-    <RandomAsciiImage client:idle images={ASCII_IMAGE_PATHS.left} />
+  <MediaQuery client:load minWidth="3xl">
+    <RandomAsciiImage images={ASCII_IMAGE_PATHS.left} />
   </MediaQuery>
-  <RandomAsciiImage client:idle images={ASCII_IMAGE_PATHS.right} />
+  <RandomAsciiImage client:load images={ASCII_IMAGE_PATHS.right} />
 </Layout>

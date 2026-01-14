@@ -246,7 +246,7 @@ function ChartTooltip({ point, position }: TooltipProps) {
           y={tooltipY + padding + lineHeight * (i + 0.75)}
           fontSize="14"
           fill="#f4f4f5"
-          fontFamily="IBM Plex Mono, monospace"
+          fontFamily="Geist Mono, monospace"
         >
           {line}
         </text>
@@ -306,7 +306,7 @@ export default function VisibilityChart() {
             fill="#a1a1aa"
             transform="rotate(-90, 10, 160)"
             textAnchor="middle"
-            fontFamily="IBM Plex Mono, monospace"
+            fontFamily="Geist Mono, monospace"
           >
             Visibility of work
           </text>
@@ -315,7 +315,7 @@ export default function VisibilityChart() {
             y="318"
             fontSize="12"
             fill="#a1a1aa"
-            fontFamily="IBM Plex Mono, monospace"
+            fontFamily="Geist Mono, monospace"
             textAnchor="middle"
           >
             Effort
@@ -328,7 +328,7 @@ export default function VisibilityChart() {
             fontSize="13"
             fill="#f4f4f5"
             fontWeight="500"
-            fontFamily="IBM Plex Mono, monospace"
+            fontFamily="Geist Mono, monospace"
           >
             Frontend
           </text>
@@ -340,7 +340,7 @@ export default function VisibilityChart() {
             fontSize="13"
             fill="#4ade80"
             fontWeight="500"
-            fontFamily="IBM Plex Mono, monospace"
+            fontFamily="Geist Mono, monospace"
           >
             SDET
           </text>

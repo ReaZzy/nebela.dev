@@ -1,0 +1,18 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<a
+  href="/blog"
+  data-astro-navigate
+  class:list={[
+    "inline-block font-mono text-base text-zinc-400 hover:text-green-400 active:text-green-400 transition-colors duration-200",
+    className,
+  ]}
+>
+  ← back to all posts
+</a>

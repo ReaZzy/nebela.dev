@@ -1,62 +1,45 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
-import AsciiImage from "@/components/ascii/ascii-image";
+import Footer from "@/components/Footer.astro";
 import { formatDate } from "@/utils/format-date";
+import RandomAsciiImage from "@/components/ascii/random-ascii-image";
+import { ASCII_IMAGE_PATHS } from "@/components/ascii/constants/random-ascii-images.config";
+import AttachCopyToCode from "@/components/blog/AttachCopyToCode.astro";
+import AttachAnchors from "@/components/blog/AttachAnchors.astro";
+import BackToAllPosts from "@/components/blog/BackToAllPosts.astro";
+import { ME } from "@/constants/me";
+import type { Frontmatter } from "@/utils/blog";
 
 interface Props {
-  title: string;
-  description?: string;
-  publishedAt?: Date;
-  updatedAt?: Date;
+  frontmatter: Frontmatter;
 }
 
-const { title, description, publishedAt, updatedAt } = Astro.props;
+const { frontmatter } = Astro.props;
 ---
 
-<Layout title={`${title} | blog`} description={description}>
-  <AsciiImage
-    client:idle
-    path="/ascii-flower-3.txt"
-    preset="no-flicker"
-    className="justify-end bg-clip-text text-transparent bg-linear-(--green-gradient) fixed inset-0 z-0"
-  />
-
+<Layout title={`${frontmatter.title} | ${ME.name}`} description={frontmatter.description}>
   <div class="relative z-10 min-h-screen flex flex-col">
     <Header currentPage="blog" />
 
-    <main class="w-full max-w-4xl mx-auto px-4 py-8 flex-1">
-      <article class="prose" itemscope itemtype="https://schema.org/BlogPosting">
-        <header class="mb-8">
-          <h1 itemprop="headline">{title}</h1>
-          {
-            publishedAt && (
-              <div class="flex gap-4 text-zinc-400 text-base mt-2">
-                <time datetime={publishedAt.toISOString()} itemprop="datePublished">
-                  {formatDate(publishedAt)}
-                </time>
-                {updatedAt && (
-                  <time datetime={updatedAt.toISOString()} itemprop="dateModified">
-                    (updated: {formatDate(updatedAt)})
-                  </time>
-                )}
-              </div>
-            )
-          }
+    <main class="w-full max-w-4xl mx-auto px-4 pb-8 flex-1" transition:name="main-content">
+      <BackToAllPosts class="mb-4" />
+      <article class="prose max-w-none">
+        <header class="mb-8 not-prose">
+          <h1 class="font-mono text-2xl md:text-3xl mb-2 text-zinc-100">{frontmatter.title}</h1>
+          <time datetime={frontmatter.date.toISOString()} class="font-mono text-sm text-zinc-400">
+            {formatDate(frontmatter.date)}
+          </time>
         </header>
 
-        <div itemprop="articleBody">
-          <slot />
-        </div>
+        <slot />
       </article>
+      <BackToAllPosts class="mt-8" />
     </main>
 
-    <footer class="w-full max-w-4xl mx-auto px-4 pb-8">
-      <nav class="flex gap-4 font-mono text-base text-zinc-400" aria-label="Post navigation">
-        <a href="/blog" class="hover:text-green-400 active:text-green-400 transition-colors"
-          >&larr; back to blog</a
-        >
-      </nav>
-    </footer>
+    <Footer />
   </div>
+  <RandomAsciiImage client:idle images={ASCII_IMAGE_PATHS.blog} className="opacity-20" />
+  <AttachCopyToCode />
+  <AttachAnchors />
 </Layout>
