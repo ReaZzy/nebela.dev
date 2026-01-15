@@ -3,8 +3,8 @@ import { ME } from "@/constants/me";
 ---
 
 <section aria-label="Work experience">
-  <h2 class="font-mono text-xl text-zinc-100 mb-4">
-    <span class="text-green-400">#</span> work
+  <h2 class="font-mono text-xl mb-4">
+    <span class="text-green-600 dark:text-green-400">#</span> work
   </h2>
   <div class="space-y-4">
     {
@@ -16,18 +16,18 @@ import { ME } from "@/constants/me";
                 href={work.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="font-mono text-base text-zinc-100 hover:text-green-400 active:text-green-400 transition-colors duration-200"
+                class="font-mono text-base hover:text-green-600 dark:hover:text-green-400 active:text-green-600 dark:active:text-green-400 transition-colors duration-200"
               >
                 {work.title}
               </a>
             ) : (
-              <h3 class="font-mono text-base text-zinc-100">{work.title}</h3>
+              <h3 class="font-mono text-base">{work.title}</h3>
             )}
-            <span class="font-mono text-sm text-zinc-400">
+            <span class="font-mono text-sm text-zinc-500 dark:text-zinc-400">
               {work.from} – {work.to}
             </span>
           </div>
-          <p class="font-mono text-sm text-zinc-400 mt-1">{work.experience}</p>
+          <p class="font-mono text-sm text-zinc-500 dark:text-zinc-400 mt-1">{work.experience}</p>
         </div>
       ))
     }

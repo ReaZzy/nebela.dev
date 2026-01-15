@@ -1,4 +1,6 @@
 ---
+import { ThemeToggle } from "@/components/ThemeToggle";
+
 interface Props {
   currentPage?: "home" | "blog";
 }
@@ -11,13 +13,13 @@ const { currentPage } = Astro.props;
   transition:name="header"
   transition:animate="fade"
 >
-  <nav class="flex gap-4 font-mono text-base" aria-label="Main navigation">
+  <nav class="flex gap-4 font-mono text-base items-center" aria-label="Main navigation">
     <a
       href="/"
       {...currentPage !== "home" && { "data-astro-navigate": true }}
       class={currentPage === "home"
-        ? "text-green-400 cursor-default pointer-events-none"
-        : "text-zinc-400 hover:text-green-400 active:text-green-400 transition-colors duration-200"}
+        ? "text-green-600 dark:text-green-400 cursor-default pointer-events-none"
+        : "text-zinc-500 dark:text-zinc-400 hover:text-green-600 dark:hover:text-green-400 active:text-green-600 dark:active:text-green-400 transition-colors duration-200"}
       {...currentPage === "home" && { "aria-current": "page" }}
     >
       [h] home
@@ -26,11 +28,12 @@ const { currentPage } = Astro.props;
       href="/blog"
       {...currentPage !== "blog" && { "data-astro-navigate": true }}
       class={currentPage === "blog"
-        ? "text-green-400 cursor-default pointer-events-none"
-        : "text-zinc-400 hover:text-green-400 active:text-green-400 transition-colors duration-200"}
+        ? "text-green-600 dark:text-green-400 cursor-default pointer-events-none"
+        : "text-zinc-500 dark:text-zinc-400 hover:text-green-600 dark:hover:text-green-400 active:text-green-600 dark:active:text-green-400 transition-colors duration-200"}
       {...currentPage === "blog" && { "aria-current": "page" }}
     >
       [b] blog
     </a>
+    <ThemeToggle client:load className="ml-auto" />
   </nav>
 </header>

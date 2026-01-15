@@ -21,13 +21,13 @@ const requestedPath = Astro.url.pathname;
     >
       <div class="space-y-6">
         <div class="font-mono">
-          <h1 class="text-4xl md:text-6xl text-zinc-100 mb-2">404</h1>
-          <p class="text-xl text-zinc-400">page not found</p>
+          <h1 class="text-4xl md:text-6xl mb-2">404</h1>
+          <p class="text-xl text-zinc-500 dark:text-zinc-400">page not found</p>
         </div>
 
-        <div class="font-mono text-base text-zinc-400 space-y-1">
+        <div class="font-mono text-base text-zinc-500 dark:text-zinc-400 space-y-1">
           <p>$ cat {requestedPath}</p>
-          <p class="text-red-400">cat: {requestedPath}: No such file or directory</p>
+          <p class="text-red-600 dark:text-red-400">cat: {requestedPath}: No such file or directory</p>
         </div>
       </div>
     </main>

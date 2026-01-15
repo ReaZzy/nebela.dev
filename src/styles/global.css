@@ -33,7 +33,7 @@
 
 @layer components {
   .prose {
-    @apply font-sans text-zinc-100 text-[17px] leading-relaxed;
+    @apply font-sans text-zinc-800 dark:text-zinc-100 text-[17px] leading-relaxed;
   }
 
   .prose > *:last-child {
@@ -49,12 +49,12 @@
   }
 
   .prose h1.heading-with-anchor {
-    @apply hover:text-green-400 active:text-green-400 transition-colors duration-200;
+    @apply hover:text-green-600 dark:hover:text-green-400 active:text-green-600 dark:active:text-green-400 transition-colors duration-200;
   }
 
   .prose h1.heading-with-anchor::before {
     content: "# ";
-    @apply text-green-400;
+    @apply text-green-600 dark:text-green-400;
   }
 
   .prose h2 {
@@ -62,12 +62,12 @@
   }
 
   .prose h2.heading-with-anchor {
-    @apply hover:text-green-400 active:text-green-400 transition-colors duration-200;
+    @apply hover:text-green-600 dark:hover:text-green-400 active:text-green-600 dark:active:text-green-400 transition-colors duration-200;
   }
 
   .prose h2.heading-with-anchor::before {
     content: "## ";
-    @apply text-green-400;
+    @apply text-green-600 dark:text-green-400;
   }
 
   .prose h3 {
@@ -75,16 +75,16 @@
   }
 
   .prose h3.heading-with-anchor {
-    @apply hover:text-green-400 active:text-green-400 transition-colors duration-200;
+    @apply hover:text-green-600 dark:hover:text-green-400 active:text-green-600 dark:active:text-green-400 transition-colors duration-200;
   }
 
   .prose h3.heading-with-anchor::before {
     content: "### ";
-    @apply text-green-400;
+    @apply text-green-600 dark:text-green-400;
   }
 
   .prose .heading-anchor {
-    @apply absolute -left-4 text-zinc-400 hover:text-green-400 active:text-green-400 transition-all duration-200 no-underline;
+    @apply absolute -left-4 text-zinc-500 dark:text-zinc-400 hover:text-green-600 dark:hover:text-green-400 active:text-green-600 dark:active:text-green-400 transition-all duration-200 no-underline;
   }
 
   .prose .heading-anchor::before,
@@ -122,7 +122,7 @@
   .prose h1.active-heading .heading-anchor,
   .prose h2.active-heading .heading-anchor,
   .prose h3.active-heading .heading-anchor {
-    @apply opacity-100 text-green-400;
+    @apply opacity-100 text-green-600 dark:text-green-400;
   }
 
   .prose p {
@@ -130,7 +130,7 @@
   }
 
   .prose a {
-    @apply text-green-400 hover:text-green-300 active:text-green-300 transition-colors;
+    @apply text-green-600 dark:text-green-400 hover:text-green-500 dark:hover:text-green-300 active:text-green-500 dark:active:text-green-300 transition-colors;
   }
 
   .prose a::before {
@@ -142,21 +142,21 @@
   }
 
   .prose strong {
-    @apply text-zinc-50 font-bold;
+    @apply text-zinc-900 dark:text-zinc-50 font-bold;
   }
 
   .prose em {
-    @apply italic text-zinc-300;
+    @apply italic text-zinc-600 dark:text-zinc-300;
   }
 
   .prose em::before {
     content: "_";
-    @apply text-zinc-400 not-italic;
+    @apply text-zinc-500 dark:text-zinc-400 not-italic;
   }
 
   .prose em::after {
     content: "_";
-    @apply text-zinc-400 not-italic;
+    @apply text-zinc-500 dark:text-zinc-400 not-italic;
   }
 
   /* Prevent double decoration for nested em elements */
@@ -166,21 +166,21 @@
   }
 
   .prose code {
-    @apply bg-zinc-800 px-1.5 py-0.5 text-green-400 font-mono;
+    @apply bg-zinc-200 dark:bg-zinc-800 px-1.5 py-0.5 text-green-700 dark:text-green-400 font-mono;
   }
 
   .prose code::before {
     content: "`";
-    @apply text-zinc-400;
+    @apply text-zinc-500 dark:text-zinc-400;
   }
 
   .prose code::after {
     content: "`";
-    @apply text-zinc-400;
+    @apply text-zinc-500 dark:text-zinc-400;
   }
 
   .prose pre {
-    @apply bg-zinc-800 p-4 mb-4 overflow-x-auto border-l-2 border-green-400 relative min-h-[3rem] font-mono;
+    @apply bg-zinc-200 dark:bg-zinc-800 p-4 mb-4 overflow-x-auto border-l-2 border-green-600 dark:border-green-400 relative min-h-[3rem] font-mono;
   }
 
   .prose pre code {
@@ -193,7 +193,7 @@
   }
 
   .prose .copy-button {
-    @apply absolute top-2 right-2 p-1.5 bg-zinc-700 hover:bg-zinc-600 active:bg-zinc-600 text-zinc-300 hover:text-green-400 active:text-green-400 transition-colors duration-200 cursor-pointer border border-zinc-600 flex items-center justify-center;
+    @apply absolute top-2 right-2 p-1.5 bg-zinc-300 dark:bg-zinc-700 hover:bg-zinc-400 dark:hover:bg-zinc-600 active:bg-zinc-400 dark:active:bg-zinc-600 text-zinc-600 dark:text-zinc-300 hover:text-green-700 dark:hover:text-green-400 active:text-green-700 dark:active:text-green-400 transition-colors duration-200 cursor-pointer border border-zinc-400 dark:border-zinc-600 flex items-center justify-center;
   }
 
   .prose .copy-button svg {
@@ -219,12 +219,12 @@
   }
 
   .prose blockquote {
-    @apply border-l-2 border-zinc-500 pl-4 text-zinc-400 italic my-4;
+    @apply border-l-2 border-zinc-400 dark:border-zinc-500 pl-4 text-zinc-500 dark:text-zinc-400 italic my-4;
   }
 
   .prose blockquote::before {
     content: "> ";
-    @apply text-zinc-400 not-italic;
+    @apply text-zinc-500 dark:text-zinc-400 not-italic;
   }
 
   .prose ul {
@@ -237,7 +237,7 @@
 
   .prose ul > li::before {
     content: "- ";
-    @apply text-green-400 absolute left-0;
+    @apply text-green-600 dark:text-green-400 absolute left-0;
   }
 
   .prose ol {
@@ -252,11 +252,11 @@
 
   .prose ol > li::before {
     content: counter(list-counter) ". ";
-    @apply text-green-400 absolute left-0;
+    @apply text-green-600 dark:text-green-400 absolute left-0;
   }
 
   .prose hr {
-    @apply border-none my-8 text-zinc-400;
+    @apply border-none my-8 text-zinc-500 dark:text-zinc-400;
   }
 
   .prose hr::before {
@@ -265,7 +265,7 @@
   }
 
   .prose img {
-    @apply my-4 border border-zinc-700 max-w-full h-auto w-auto;
+    @apply my-4 border border-zinc-300 dark:border-zinc-700 max-w-full h-auto w-auto;
   }
 
   .prose table {
@@ -273,11 +273,11 @@
   }
 
   .prose th {
-    @apply text-left border-b border-zinc-600 pb-2 text-green-400;
+    @apply text-left border-b border-zinc-300 dark:border-zinc-600 pb-2 text-green-700 dark:text-green-400;
   }
 
   .prose td {
-    @apply border-b border-zinc-800 py-2;
+    @apply border-b border-zinc-200 dark:border-zinc-800 py-2;
   }
 }
 

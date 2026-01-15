@@ -56,9 +56,12 @@ const ogImageUrl = new URL(ogImagePath, Astro.site || Astro.url.origin).href;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImageUrl} />
 
+    <script is:inline>
+      (function(){var t=localStorage.getItem("theme")||"dark";if(t==="dark")document.documentElement.classList.add("dark")})();
+    </script>
     <ViewTransitions fallback="none" />
   </head>
-  <body class="bg-zinc-900 text-zinc-100 min-h-full w-full">
+  <body class="bg-zinc-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 min-h-full w-full">
     <slot />
   </body>
 </html>
@@ -78,8 +81,17 @@ const ogImageUrl = new URL(ogImagePath, Astro.site || Astro.url.origin).href;
 
 <script>
   import { initKeyboardNavigation } from "@/utils/keyboard-navigation";
+  import { getStoredTheme, applyTheme, DEFAULT_THEME } from "@/utils/theme";
+
+  function initTheme() {
+    applyTheme(getStoredTheme() || DEFAULT_THEME);
+  }
 
   initKeyboardNavigation();
+  initTheme();
 
-  document.addEventListener("astro:after-swap", initKeyboardNavigation);
+  document.addEventListener("astro:after-swap", () => {
+    initKeyboardNavigation();
+    initTheme();
+  });
 </script>

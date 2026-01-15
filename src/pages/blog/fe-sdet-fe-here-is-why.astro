@@ -23,7 +23,7 @@ export const frontmatter = {
 
   <p>During my React premature-optimization era, a recruiter reached out to me with a role I was skeptical about. It was an emerging test automation team, so I'd be writing deployment configs, working with CI, and building E2E tests from scratch. After a few interviews, I realized my reluctance wasn't really about the role.</p>
 
-  <p>It was <span class="text-green-400">fear</span>.</p>
+  <p>It was <span class="text-green-600 dark:text-green-400">fear</span>.</p>
 
   <p>Fear of not being able to catch up with so many things that were new to me. Things I'd spent years avoiding would suddenly become my responsibility.</p>
 
@@ -48,19 +48,19 @@ export const frontmatter = {
 
   <ol>
     <li>
-      <strong class="text-green-400">Camouflage the tests</strong><br />
+      <strong class="text-green-600 dark:text-green-400">Camouflage the tests</strong><br />
       This might sound silly, but I've found it surprisingly effective. The idea is simple: make the tests behave like a real QA would. Our system automatically creates bugs with screenshots and replication steps, then assigns them to the dev team lead. Once the developer fixes the bug, they can mark it as resolved, and our test runner will either close the bug or reopen it with an updated description if the issue persists.
     </li>
     <li>
-      <strong class="text-green-400">Minimize the bugs</strong><br />
+      <strong class="text-green-600 dark:text-green-400">Minimize the bugs</strong><br />
       Camouflaging tests is effective, but they can quickly lose their impact if too many bugs flood the system. With a constantly changing UI, some test failures are inevitable, but there are ways to reduce noise and keep bug reports minimal:
       <ul>
-        <li><strong class="text-green-400">Dependency-aware execution:</strong> Every test has a list of "parent" tests (yes, we deliberately chose what's typically considered a bad practice in testing). For example, if the login fails, there's no point in running the rest of the tests because they're guaranteed to fail. This speeds up execution and generates substantially fewer bugs. The same system applies when the site is down; we simply skip everything.</li>
-        <li><strong class="text-green-400">Capping repeated failures:</strong> If the same error appears multiple times, we only log a limited number of bugs for it. For instance, if a random error dialog pops up, only 8 bugs are created instead of dozens.</li>
+        <li><strong class="text-green-600 dark:text-green-400">Dependency-aware execution:</strong> Every test has a list of "parent" tests (yes, we deliberately chose what's typically considered a bad practice in testing). For example, if the login fails, there's no point in running the rest of the tests because they're guaranteed to fail. This speeds up execution and generates substantially fewer bugs. The same system applies when the site is down; we simply skip everything.</li>
+        <li><strong class="text-green-600 dark:text-green-400">Capping repeated failures:</strong> If the same error appears multiple times, we only log a limited number of bugs for it. For instance, if a random error dialog pops up, only 8 bugs are created instead of dozens.</li>
       </ul>
     </li>
     <li>
-      <strong class="text-green-400">Keep moving</strong><br />
+      <strong class="text-green-600 dark:text-green-400">Keep moving</strong><br />
       Always find new ways to improve or replace parts of the current workflow. Do you have problems with debugging failed deploys? Maybe you could write a quick parser of the logs and attach those to your reporting system. You can even vibe-code those.
     </li>
   </ol>
@@ -70,7 +70,7 @@ export const frontmatter = {
   <p>Once I started writing tests full-time, I had all the time in the world to make my scenarios as sophisticated as possible. Did it help? No. I found that simpler tests bring higher ROI. They're easier to write, break less often, and build trust in the suite over time. You might argue that simple tests miss edge cases. In practice, clever tests harm the reputation of their reliable fellows and are eventually closed with "By Design."</p>
 
   <h3>SDET should be resilient</h3>
-  <p>Do you know the main enemy of reliable tests? <span class="text-green-400">F</span><span class="text-green-400">l</span><span class="text-red-400">a</span><span class="text-green-400">k</span><span class="text-red-400">y</span> environment. An SDET has to ensure that the deployments are stable; if current deployment pipelines are consistently failing, your tests are slowly rotting.</p>
+  <p>Do you know the main enemy of reliable tests? <span class="text-green-600 dark:text-green-400">F</span><span class="text-green-600 dark:text-green-400">l</span><span class="text-red-600 dark:text-red-400">a</span><span class="text-green-600 dark:text-green-400">k</span><span class="text-red-600 dark:text-red-400">y</span> environment. An SDET has to ensure that the deployments are stable; if current deployment pipelines are consistently failing, your tests are slowly rotting.</p>
 
   <p>Please make sure to write your own pipelines, or at least some wrappers, to guarantee a reliable schedule!</p>
 

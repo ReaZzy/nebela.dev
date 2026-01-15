@@ -16,23 +16,23 @@ interface ExampleTabsProps {
 
 const colorStyles: Record<TabColor, { active: string; border: string }> = {
   red: {
-    active: "bg-red-500/20 text-red-400 border border-red-500/50",
+    active: "bg-red-500/20 text-red-600 dark:text-red-400 border border-red-500/50",
     border: "border-red-500",
   },
   green: {
-    active: "bg-green-500/20 text-green-400 border border-green-500/50",
+    active: "bg-green-500/20 text-green-600 dark:text-green-400 border border-green-500/50",
     border: "border-green-500",
   },
   blue: {
-    active: "bg-blue-500/20 text-blue-400 border border-blue-500/50",
+    active: "bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/50",
     border: "border-blue-500",
   },
   yellow: {
-    active: "bg-yellow-500/20 text-yellow-400 border border-yellow-500/50",
+    active: "bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 border border-yellow-500/50",
     border: "border-yellow-500",
   },
   zinc: {
-    active: "bg-zinc-500/20 text-zinc-300 border border-zinc-500/50",
+    active: "bg-zinc-500/20 text-zinc-600 dark:text-zinc-300 border border-zinc-500/50",
     border: "border-zinc-500",
   },
 };
@@ -75,7 +75,7 @@ export default function ExampleTabs({ tabs, label = "Code examples" }: ExampleTa
             className={`px-3 py-1.5 font-mono text-sm transition-colors duration-200 cursor-pointer select-none active:scale-95 ${
               activeIndex === i
                 ? colorStyles[tab.color].active
-                : "bg-zinc-800 text-zinc-400 border border-zinc-700 hover:text-zinc-300"
+                : "bg-zinc-200 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 hover:text-zinc-600 dark:hover:text-zinc-300"
             }`}
           >
             {tab.label}
@@ -90,11 +90,11 @@ export default function ExampleTabs({ tabs, label = "Code examples" }: ExampleTa
           id={`${id}-panel-${i}`}
           aria-labelledby={`${id}-tab-${i}`}
           hidden={activeIndex !== i}
-          className={`px-3 pt-2 border-l-2 bg-zinc-800 overflow-x-auto ${colorStyles[tab.color].border}`}
+          className={`px-3 pt-2 border-l-2 bg-zinc-200 dark:bg-zinc-800 overflow-x-auto ${colorStyles[tab.color].border}`}
         >
-          <div className="font-mono text-sm text-zinc-100 whitespace-pre-wrap mb-2">{tab.code}</div>
+          <div className="font-mono text-sm text-zinc-800 dark:text-zinc-100 whitespace-pre-wrap mb-2">{tab.code}</div>
           {tab.description && (
-            <p className="text-sm text-zinc-400 font-sans mb-2">{tab.description}</p>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 font-sans mb-2">{tab.description}</p>
           )}
         </div>
       ))}

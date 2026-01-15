@@ -5,9 +5,18 @@ import { wrapText } from "./text";
 interface ChartTooltipProps {
   point: DataPoint;
   position: "above" | "below";
+  bg?: string;
+  border?: string;
+  text?: string;
 }
 
-export function ChartTooltip({ point, position }: ChartTooltipProps) {
+export function ChartTooltip({
+  point,
+  position,
+  bg = TOOLTIP.bg,
+  border = TOOLTIP.border,
+  text = TOOLTIP.text,
+}: ChartTooltipProps) {
   if (!point.label) return null;
 
   const lines = wrapText(point.label, TOOLTIP.maxCharsPerLine);
@@ -38,20 +47,20 @@ export function ChartTooltip({ point, position }: ChartTooltipProps) {
         y={tooltipY}
         width={boxWidth}
         height={boxHeight}
-        fill={TOOLTIP.bg}
-        stroke={TOOLTIP.border}
+        fill={bg}
+        stroke={border}
         strokeWidth="1"
         rx="4"
       />
-      <polygon points={arrowPoints} fill={TOOLTIP.bg} stroke={TOOLTIP.border} strokeWidth="1" />
-      <rect x={tooltipX} y={coverY} width={boxWidth} height="6" fill={TOOLTIP.bg} />
+      <polygon points={arrowPoints} fill={bg} stroke={border} strokeWidth="1" />
+      <rect x={tooltipX} y={coverY} width={boxWidth} height="6" fill={bg} />
       {lines.map((line, i) => (
         <text
           key={i}
           x={tooltipX + TOOLTIP.padding}
           y={tooltipY + TOOLTIP.padding + TOOLTIP.lineHeight * (i + 0.75)}
           fontSize="14"
-          fill={TOOLTIP.text}
+          fill={text}
           fontFamily="Geist Mono, monospace"
         >
           {line}
