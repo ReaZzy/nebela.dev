@@ -6,7 +6,7 @@ import ResilientSdet from "@/components/blog/article-components/fe-sdet-fe/resil
 import Responsibility from "@/components/blog/article-components/fe-sdet-fe/responsibility.png";
 
 export const frontmatter = {
-  title: "i left frontend for SDET, then came back. here's why",
+  title: "I left frontend for SDET, then came back. Here's why",
   description: "the reasons i switched from frontend development to software development engineering in test (sdet), and why i returned to frontend",
   date: new Date("2026-01-14"),
 };
@@ -15,7 +15,7 @@ export const frontmatter = {
 <BlogLayout frontmatter={frontmatter}>
   <p>Have you ever been afraid to SSH into a Linux machine to retrieve some logs, or, God forbid, restart a failed service?</p>
 
-  <p>Many of us live in the safe, local world of our IDEs and fancy, chromium-based browsers, with no need to escape our comfort zone. I used to think that there was no point in challenging myself with CI issues when I could just wait for someone else to fix them. The code works locally. "80% coverage" AI-written tests pass. Whatever happens next isn't my responsibility, right? Now, I would argue otherwise.</p>
+  <p>Many of us live in the safe, local world of our IDEs and fancy, chromium-based browsers, with no need to escape from our comfort zones. I used to think that there was no point in challenging myself with CI issues when I could just wait for someone else to fix them. The code works locally. "80% coverage" AI-written tests pass. Whatever happens next isn't my problem, right? Now, I would argue otherwise.</p>
 
   <img src={Responsibility.src} alt="you should be responsible for failed CI" class="border-none mx-auto pointer-events-none select-none max-w-full h-auto" />
 
@@ -27,22 +27,22 @@ export const frontmatter = {
 
   <p>Fear of not being able to catch up with so many things that were new to me. Things I'd spent years avoiding would suddenly become my responsibility.</p>
 
-  <p>There's that cliché interview question: "Why should we hire you?" I never had a good answer. I could talk about reusable components and cutting-edge tech, but so can everyone else.</p>
+  <p>Then, there's that cliché interview question: "Why should we hire you?" I never had a good answer. I could talk about reusable components and cutting-edge tech, but so could everyone else.</p>
 
-  <p>The SDET role scared me. That's exactly why I took it.</p>
+  <p>The fact is, the SDET role scared me — that's exactly why I took it.</p>
 
   <h2>Being a SDET</h2>
 
-  <p>The first thing you notice after becoming an SDET is that nobody really cares about you or your tests. Your work is either invisible or gets a quick "wow, great job," which is forgotten the next day. Compared to highly visible frontend work, that sucks.</p>
+  <p>The first thing you notice after becoming an SDET is that nobody really cares about you or your tests. Your work is either invisible or gets a quick "wow, great job," which is forgotten about the next day. Compared to highly visible frontend work, that sucks.</p>
 
   <VisibilityChart client:load />
 
-  <p>The difference is simple: a few hours spent on a new button or dialog produces something tangible you can show immediately. Testing doesn't work that way. You can spend months writing hundreds of tests, and unless you actively make them reliable and easy to use, nobody notices they exist at all.</p>
+  <p>The difference is simple: a few hours spent on a new button or dialog produces something tangible you can immediately show. Testing doesn't work that way. You can spend months writing hundreds of tests, and unless you actively make them reliable and easy to use, nobody notices they exist at all.</p>
 
   <h3>Fighting for visibility</h3>
-  <p>First of all, why do test results need visibility? The answer is simple: so failures get fixed quickly instead of sitting in the backlog. Failed tests are an accumulating trap, like a snowball rolling downhill — the more of them there are, the harder it becomes to stay sane. Over time, excessive failures further reduce visibility: once everything is red, the tests become little more than a waste of CPU cycles.</p>
+  <p>First of all, why do test results need visibility? The answer is simple: it is so failures get fixed quickly instead of sitting in the backlog. Failed tests are an accumulating trap, like a snowball rolling downhill — the more of them there are, the harder it becomes to stay sane. Over time, excessive failures further reduce visibility: once everything is red, the tests become little more than a waste of CPU cycles.</p>
 
-  <p>When a team reaches the point where test results are reviewed on every run, testing stops being noise and becomes a representation of a system's state.</p>
+  <p>When a team reaches the point where the test results are reviewed on every run, testing stops being noise and becomes a representation of a system's state.</p>
 
   <h3>How to achieve higher visibility</h3>
 
@@ -55,7 +55,7 @@ export const frontmatter = {
       <strong class="text-green-600 dark:text-green-400">Minimize the bugs</strong><br />
       Camouflaging tests is effective, but they can quickly lose their impact if too many bugs flood the system. With a constantly changing UI, some test failures are inevitable, but there are ways to reduce noise and keep bug reports minimal:
       <ul>
-        <li><strong class="text-green-600 dark:text-green-400">Dependency-aware execution:</strong> Every test has a list of "parent" tests (yes, we deliberately chose what's typically considered a bad practice in testing). For example, if the login fails, there's no point in running the rest of the tests because they're guaranteed to fail. This speeds up execution and generates substantially fewer bugs. The same system applies when the site is down; we simply skip everything.</li>
+        <li><strong class="text-green-600 dark:text-green-400">Dependency-aware execution:</strong> Every test has a list of "parent" tests (yes, we deliberately chose what's typically considered a bad practice in testing). For example, if the login fails, there's no point in running the remaining tests because they're guaranteed to fail. This speeds up execution and generates substantially fewer bugs. The same system applies when the site is down; we simply skip everything.</li>
         <li><strong class="text-green-600 dark:text-green-400">Capping repeated failures:</strong> If the same error appears multiple times, we only log a limited number of bugs for it. For instance, if a random error dialog pops up, only 8 bugs are created instead of dozens.</li>
       </ul>
     </li>
@@ -67,17 +67,17 @@ export const frontmatter = {
 
   <h3>Pragmatic approach to tests</h3>
 
-  <p>Once I started writing tests full-time, I had all the time in the world to make my scenarios as sophisticated as possible. Did it help? No. I found that simpler tests bring higher ROI. They're easier to write, break less often, and build trust in the suite over time. You might argue that simple tests miss edge cases. In practice, clever tests harm the reputation of their reliable fellows and are eventually closed with "By Design."</p>
+  <p>Once I started writing tests full-time, I had all the time in the world to make my scenarios as sophisticated as possible. Did it help? No. I found that simpler tests bring higher ROI. They're easier to write, break less often, and build trust in the suite over time. You might argue that simple tests miss edge cases. In practice, clever tests harm the reputation of the reliable tests and are eventually closed with "By Design."</p>
 
   <h3>SDET should be resilient</h3>
-  <p>Do you know the main enemy of reliable tests? <span class="text-green-600 dark:text-green-400">F</span><span class="text-green-600 dark:text-green-400">l</span><span class="text-red-600 dark:text-red-400">a</span><span class="text-green-600 dark:text-green-400">k</span><span class="text-red-600 dark:text-red-400">y</span> environment. An SDET has to ensure that the deployments are stable; if current deployment pipelines are consistently failing, your tests are slowly rotting.</p>
+  <p>Do you know the main enemy of reliable tests? <span class="text-green-600 dark:text-green-400">F</span><span class="text-green-600 dark:text-green-400">l</span><span class="text-red-600 dark:text-red-400">a</span><span class="text-green-600 dark:text-green-400">k</span><span class="text-red-600 dark:text-red-400">y</span> environments. An SDET has to ensure that the deployments are stable; if current deployment pipelines are consistently failing, your tests are slowly rotting.</p>
 
   <p>Please make sure to write your own pipelines, or at least some wrappers, to guarantee a reliable schedule!</p>
 
   <img src={ResilientSdet.src} alt="sdet should be resilient" class="border-none max-w-full md:max-w-[30rem] mx-auto pointer-events-none select-none h-auto" />
 
   <h3>Reduce friction</h3>
-  <p>Be proactive in your collaboration with other devs, treat them as your "customers". Always try to make their lives simpler; by doing so, you are one step closer to making tests a norm in the development workflow.</p>
+  <p>Be proactive when collaborating with other devs, treat them as your "customers". Always try to make their lives simpler; by doing so, you are one step closer to making tests a norm in the development workflow.</p>
 
   <h3>Have meaningful error messages</h3>
 
@@ -109,16 +109,16 @@ export const frontmatter = {
 
   <h2>Coming back</h2>
   <h3>The decision</h3>
-  <p>I'd been an SDET for more than a year. Even though it gave me life-changing lessons on how I approach my work, I still decided to switch back to frontend at the same company. The main reason is that the deeper you go, the more you're building project-specific knowledge that doesn't transfer. The lessons got smaller.</p>
+  <p>I'd been working as an SDET for more than a year. Even though it gave me life-changing lessons on how to approach my work, I still decided to switch back to frontend at the same company. The main reason is that the deeper you go, the more you build project-specific knowledge that doesn't transfer. The lessons got smaller.</p>
 
-  <p>Honestly, I just missed the frontend. And now I'm no longer afraid to do some nasty CI stuff.</p>
+  <p>Honestly, I just missed the frontend, and now I'm no longer afraid to do some nasty CI stuff.</p>
 
   <h3>The move</h3>
   <p>Remember when I said broken pipelines should be your responsibility? It became clear to me that the resilience part applies not only to SDETs but also to all devs.</p>
 
-  <p>The noticeable shift is that I no longer ignore failed CI. I check why something broke instead of waiting for someone else to notice. You won't always be able to fix it without proper DevOps knowledge, but it's worth learning. Be the dev who actually cares.</p>
+  <p>The noticeable shift is that I no longer ignore failed CI. I check why something broke instead of waiting for someone else to notice. You won't always be able to fix it without proper DevOps knowledge, but it's worth learning — be the dev who actually cares!</p>
 
-  <p>Writing a lot of tests changed how I write code. I pay more attention to edge cases and structure things so they're easy to test. For example, when using React I now extract as much logic into plain JS functions as possible — no hooks, no components, no worrying about shallow vs. full DOM rendering.</p>
+  <p>Writing a lot of tests changed how I write code. I pay more attention to edge cases and structure things so they're easy to test. For example, when using React, I now extract as much logic into plain JS functions as possible — no hooks, no components, no worrying about shallow vs. full DOM rendering.</p>
 
   <p>These days, good test titles might be all that's needed. AI can usually write good enough tests. But AI isn't yet great at knowing what to test. The scenarios still have to come from you.</p>
 
@@ -126,7 +126,7 @@ export const frontmatter = {
 
   <p>Should every frontend dev do the same? Probably not.</p>
 
-  <p>But find the thing that scares you. The thing you've been hoping someone else will handle. That's your version of this. It also finally gave me a real answer to that stupid interview question.</p>
+  <p>But find the thing that scares you. The thing you've been hoping someone else will handle. That's your version of this. It has also finally given me a real answer to that stupid interview question.</p>
 
-  <p>Hit me up on X with the links below if you want to discuss basically anything.<br />Thank you for reading!</p>
+  <p>Hit me up on X with the links below if you want to discuss pretty much anything.<br />Thank you for reading!</p>
 </BlogLayout>
