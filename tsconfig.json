@@ -14,7 +14,8 @@
       "@/hooks/*": ["src/hooks/*"],
       "@/assets/*": ["src/assets/*"],
       "@/content/*": ["src/content/*"],
-      "@/styles/*": ["src/styles/*"]
+      "@/styles/*": ["src/styles/*"],
+      "@/lib/*": ["src/lib/*"]
     }
   }
 }
