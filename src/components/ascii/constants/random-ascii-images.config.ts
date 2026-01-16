@@ -33,13 +33,13 @@ export const ASCII_IMAGE_PATHS = {
     {
       path: "ascii-images/ascii-2.txt",
       className:
-        "flex flex-col justify-end bg-clip-text text-transparent bg-linear-(--green-gradient) fixed bottom-0 right-0 h-dvh pointer-events-none opacity-20 dark:opacity-30 3xl:opacity-100",
+        "flex flex-col justify-end bg-clip-text text-transparent bg-linear-(--green-gradient) fixed bottom-0 right-0 h-dvh pointer-events-none opacity-20 dark:opacity-30 3xl:opacity-100 3xl:dark:opacity-100",
       preset: "reverse",
     },
     {
       path: "ascii-images/ascii-3.txt",
       className:
-        "flex flex-col justify-end bg-clip-text text-transparent bg-linear-(--green-gradient) fixed bottom-0 right-0 h-dvh pointer-events-none opacity-20 dark:opacity-30 3xl:opacity-100",
+        "flex flex-col justify-end bg-clip-text text-transparent bg-linear-(--green-gradient) fixed bottom-0 right-0 h-dvh pointer-events-none opacity-20 dark:opacity-30 3xl:opacity-100 3xl:dark:opacity-100",
       preset: "reverse",
     },
   ] satisfies AsciiImagePathConfig[],
