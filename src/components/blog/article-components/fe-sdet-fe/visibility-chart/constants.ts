@@ -42,7 +42,7 @@ export const LINES: LineConfig[] = [
     ],
     dots: [
       { x: 50, label: "Adding a new simple page" },
-      { x: 380, label: "Roll out a design-system change" },
+      { x: 380, label: "Rolling out a design-system change" },
     ],
   },
   {
@@ -57,9 +57,9 @@ export const LINES: LineConfig[] = [
       { x: 470, y: 125 },
     ],
     dots: [
-      { x: 208, label: "Make tests actually reliable" },
+      { x: 208, label: "Making tests actually reliable" },
       { x: 288, label: "Catching regressions before release and QA" },
-      { x: 388, label: "Make tests part of everyday dev workflow" },
+      { x: 388, label: "Making tests part of everyday dev workflow" },
     ],
   },
 ];

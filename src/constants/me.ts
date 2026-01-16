@@ -10,34 +10,34 @@ export interface WorkExperience {
 
 const WORK_EXPERIENCES = [
   {
-    title: "veeam",
+    title: "Veeam",
     link: "https://www.veeam.com",
-    from: "nov 2024",
-    to: "present",
+    from: "Nov 2024",
+    to: "Present",
     experience:
-      "worldwide leader in backup and data protection. built complex automation and testing infrastructure; now focused on large-scale enterprise frontend",
+      "Worldwide leader in backup and data protection. Built complex automation and testing infrastructure; now focused on large-scale enterprise frontend",
   },
   {
-    title: "radio free europe/radio liberty",
+    title: "Radio Free Europe/Radio Liberty",
     link: "https://www.rferl.org",
-    from: "apr 2023",
-    to: "oct 2024",
+    from: "Apr 2023",
+    to: "Oct 2024",
     experience:
-      "global media platform with millions of users. developed a heavily configurable in-house CMS for journalists and maintained public sites",
+      "Global media platform with millions of users. Developed a heavily configurable in-house CMS for journalists and maintained public sites",
   },
   {
-    title: "campiri",
+    title: "Campiri",
     link: "https://www.campiri.com",
-    from: "jane 2022",
-    to: "mar 2023",
+    from: "Jane 2022",
+    to: "Mar 2023",
     experience:
-      "early-stage booking platform for RVs. built most core frontend flows, including booking and messaging",
+      "Early-stage booking platform for RVs. Built most core frontend flows, including booking and messaging",
   },
   {
     title: "dalyoko",
     from: "dec 2021",
     to: "june 2022",
-    experience: 'web studio. led a small dev team and worked on "junior" things',
+    experience: 'Web studio. Led a small dev team and worked on "junior" things',
   },
 ] satisfies WorkExperience[];
 
@@ -67,11 +67,11 @@ const SOCIAL_LINKS = [
 export const ME = {
   name: "maksym nebela",
   location: {
-    city: "prague",
-    country: "cz",
+    city: "Prague",
+    country: "CZ",
   },
   age: getAge(new Date("2005-08-30")),
-  position: `software engineer @ ${WORK_EXPERIENCES[0].title}`,
+  position: `Software Engineer @ ${WORK_EXPERIENCES[0].title}`,
   workExperience: WORK_EXPERIENCES,
   socialLinks: SOCIAL_LINKS,
 } as const;
