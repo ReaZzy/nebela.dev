@@ -48,7 +48,7 @@ const SOCIAL_LINKS = [
   },
   {
     label: "x.com",
-    link: "https://x.com/MaximNebela",
+    link: "https://x.com/nebelamaksym",
   },
   {
     label: "linkedin",
