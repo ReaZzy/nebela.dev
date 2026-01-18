@@ -52,7 +52,7 @@ const SOCIAL_LINKS = [
   },
   {
     label: "linkedin",
-    link: "https://www.linkedin.com/in/maxim-nebela/",
+    link: "https://www.linkedin.com/in/maksym-nebela/",
   },
   {
     label: "github",
