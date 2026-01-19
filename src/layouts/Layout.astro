@@ -24,6 +24,12 @@ const ogImageUrl = new URL(ogImagePath, Astro.site || Astro.url.origin).href;
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={Astro.url.href} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${ME.name}'s blog`}
+      href={new URL("rss.xml", Astro.site)}
+    />
     <meta name="generator" content={Astro.generator} />
     <link
       rel="preload"
